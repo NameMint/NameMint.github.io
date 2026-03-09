@@ -22,7 +22,6 @@
       --bg-1: #f8fbff;
       --bg-2: #eef4ff;
       --card: rgba(255, 255, 255, 0.86);
-      --card-solid: #ffffff;
       --text: #0f172a;
       --muted: #64748b;
       --line: #e2e8f0;
@@ -32,23 +31,14 @@
       --secondary-hover: #f1f5f9;
       --accent-bg: #eef2ff;
       --accent-text: #3730a3;
-      --success: #16a34a;
-      --warning: #f59e0b;
-      --danger: #dc2626;
       --shadow: 0 20px 60px rgba(15, 23, 42, 0.1);
       --radius-xl: 28px;
       --radius-lg: 20px;
       --radius-md: 14px;
-      --radius-sm: 12px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -59,11 +49,6 @@
         radial-gradient(circle at top right, #e9d5ff 0%, transparent 22%),
         linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
       min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
     }
 
     .wrap {
@@ -82,8 +67,8 @@
       border-radius: 32px;
       box-shadow: var(--shadow);
       padding: 24px;
-      overflow: hidden;
       position: relative;
+      overflow: hidden;
     }
 
     .hero-glow {
@@ -215,8 +200,7 @@
     }
 
     .field input,
-    .field select,
-    .field textarea {
+    .field select {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 14px;
@@ -229,8 +213,7 @@
     }
 
     .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
+    .field select:focus {
       border-color: #94a3b8;
       box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.12);
     }
@@ -256,16 +239,11 @@
       font-size: 15px;
       font-weight: bold;
       cursor: pointer;
-      transition: transform 0.08s ease, opacity 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      transition: transform 0.08s ease, background 0.15s ease;
     }
 
-    button:hover {
-      transform: translateY(-1px);
-    }
-
-    button:active {
-      transform: translateY(0);
-    }
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(0); }
 
     .btn-primary {
       background: var(--primary);
@@ -389,6 +367,43 @@
       background: #fff7ed;
       border-color: #fdba74;
       color: #9a3412;
+    }
+
+    .domain-panel {
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .domain-chip {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      background: #f8fafc;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .domain-chip:hover {
+      background: #eef2ff;
+    }
+
+    .domain-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
     }
 
     .empty-state {
@@ -522,13 +537,11 @@
     }
 
     @media (max-width: 980px) {
-      .main-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .main-grid,
       .grid-2,
       .grid-3,
-      .top-stats {
+      .top-stats,
+      .domain-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -550,11 +563,13 @@
         justify-content: flex-start;
       }
 
-      .actions {
+      .actions,
+      .domain-actions {
         flex-direction: column;
       }
 
-      .actions button {
+      .actions button,
+      .domain-actions button {
         width: 100%;
       }
 
@@ -609,8 +624,8 @@
         <div class="panel-inner">
           <h2 class="panel-title">Generate your name</h2>
           <p class="panel-subtitle">
-            Start by choosing the industry, then choose what kind of name you need.
-            This gives much more relevant results than random name generators.
+            Choose the industry, choose what the name is for, add an optional keyword,
+            and generate more relevant names than random generators.
           </p>
 
           <div class="grid-2">
@@ -656,7 +671,7 @@
                 maxlength="20"
                 placeholder="Example: urban, clean, gold"
               />
-              <div class="help">Optional. Use one short word for better results.</div>
+              <div class="help">Use one short English word for cleaner results.</div>
             </div>
 
             <div class="field">
@@ -698,33 +713,33 @@
 
       <div class="panel">
         <div class="panel-inner">
-          <h2 class="panel-title">Why this generator is better</h2>
-          <div class="info-cards">
-            <div class="info-card">
-              <strong>Industry-based</strong>
-              Results change based on your niche, not just random words.
-            </div>
-            <div class="info-card">
-              <strong>Purpose-based</strong>
-              A YouTube channel name should not sound like a law firm.
-            </div>
-            <div class="info-card">
-              <strong>Keyword support</strong>
-              Add a custom word to personalize the result.
-            </div>
-            <div class="info-card">
-              <strong>Save your shortlist</strong>
-              Keep your best ideas in favorites and compare them later.
-            </div>
-          </div>
-
-          <div class="section-space"></div>
-
           <h2 class="panel-title">Saved favorites</h2>
           <p class="panel-subtitle" style="margin-bottom:12px;">
             Your best names are saved locally in your browser.
           </p>
           <div id="favoritesList" class="favorites-list"></div>
+
+          <div class="section-space"></div>
+
+          <h2 class="panel-title">Why this version is stronger</h2>
+          <div class="info-cards">
+            <div class="info-card">
+              <strong>Industry + purpose</strong>
+              A YouTube name should not sound like a legal firm or a skincare brand.
+            </div>
+            <div class="info-card">
+              <strong>Built-in domain workflow</strong>
+              Click to check possible domains fast after you generate a good name.
+            </div>
+            <div class="info-card">
+              <strong>Favorites + history</strong>
+              You can compare options instead of forgetting good names.
+            </div>
+            <div class="info-card">
+              <strong>SEO section included</strong>
+              The page now has text that helps search engines understand it better.
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -747,6 +762,27 @@
               <strong>Generate 8 Names</strong>.
             </div>
           </div>
+
+          <div id="domainPanel" class="domain-panel" style="display:none;">
+            <h3 style="margin:0 0 6px;">Domain helper</h3>
+            <div id="domainSelectedText" class="results-meta">
+              Select a generated name to prepare domain checks.
+            </div>
+
+            <div class="domain-grid">
+              <div class="domain-chip" id="domainCom" onclick="copyDomainSuggestion('.com')">—</div>
+              <div class="domain-chip" id="domainCo" onclick="copyDomainSuggestion('.co')">—</div>
+              <div class="domain-chip" id="domainIo" onclick="copyDomainSuggestion('.io')">—</div>
+              <div class="domain-chip" id="domainAi" onclick="copyDomainSuggestion('.ai')">—</div>
+            </div>
+
+            <div class="domain-actions">
+              <button class="btn-secondary" onclick="openRegistrarCheck('namecheap')">Check on Namecheap</button>
+              <button class="btn-secondary" onclick="openRegistrarCheck('godaddy')">Check on GoDaddy</button>
+              <button class="btn-secondary" onclick="openWhoisCheck()">Open WHOIS Search</button>
+              <button class="btn-primary" onclick="openAllDomainChecks()">Open All Checks</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -763,8 +799,59 @@
 
     <section class="panel section-space">
       <div class="panel-inner">
+        <h2 class="panel-title">Business Name Generator for Brands, Startups, Websites and Channels</h2>
+        <p class="panel-subtitle" style="margin-bottom: 16px;">
+          NameMint is a free name generator that helps you create names for businesses,
+          brands, startups, websites, apps, online stores, YouTube channels, podcasts,
+          products, and more. Instead of giving random ideas with no context, this tool
+          lets you choose both the industry and the exact type of name you need.
+        </p>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <strong>Generate names by industry</strong>
+            Choose from categories like Technology, Fashion, Food, Fitness, Real Estate,
+            Marketing, Beauty, Travel, Media, Software, and many more.
+          </div>
+
+          <div class="info-card">
+            <strong>Generate names by purpose</strong>
+            You can create a Company Name, Brand Name, Startup Name, Website Name,
+            Domain Name, App Name, SaaS Name, YouTube Channel Name, Podcast Name,
+            Online Store Name, Etsy Shop Name, Shopify Store Name, Product Name,
+            Service Name, and more.
+          </div>
+
+          <div class="info-card">
+            <strong>Use a keyword for better ideas</strong>
+            Add one short keyword to personalize the results. This is useful when you
+            want the generated names to feel more specific to your niche or style.
+          </div>
+
+          <div class="info-card">
+            <strong>Save and compare your favorite names</strong>
+            You can save the best options, compare them, and build a shortlist before
+            choosing the final name for your business or project.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel section-space">
+      <div class="panel-inner">
         <h2 class="panel-title">Frequently asked questions</h2>
         <div class="accordion">
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Why doesn’t the site show live domain availability directly?
+            </button>
+            <div class="faq-answer">
+              Live availability checks usually need a domain API or registrar integration.
+              This version prepares the best domain options for you and opens fast checks
+              on domain search services.
+            </div>
+          </div>
+
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
               What is the difference between category and name purpose?
@@ -778,20 +865,10 @@
 
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-              Should I use a keyword?
-            </button>
-            <div class="faq-answer">
-              A short keyword can help personalize the names, but it is optional.
-              One simple word usually works better than a long phrase.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
               How do I choose the best final name?
             </button>
             <div class="faq-answer">
-              Save 5-10 favorites, say them out loud, and choose the one that is
+              Save 5 to 10 favorites, say them out loud, and choose the one that is
               short, easy to remember, and fits your audience.
             </div>
           </div>
@@ -799,46 +876,6 @@
       </div>
     </section>
 
-    <section class="panel section-space">
-  <div class="panel-inner">
-    <h2 class="panel-title">Business Name Generator for Brands, Startups, Websites and Channels</h2>
-    <p class="panel-subtitle" style="margin-bottom: 16px;">
-      NameMint is a free name generator that helps you create names for businesses,
-      brands, startups, websites, apps, online stores, YouTube channels, podcasts,
-      products, and more. Instead of giving random ideas with no context, this tool
-      lets you choose both the industry and the exact type of name you need.
-    </p>
-
-    <div class="info-cards">
-      <div class="info-card">
-        <strong>Generate names by industry</strong>
-        Choose from categories like Technology, Fashion, Food, Fitness, Real Estate,
-        Marketing, Beauty, Travel, Media, Software, and many more.
-      </div>
-
-      <div class="info-card">
-        <strong>Generate names by purpose</strong>
-        You can create a Company Name, Brand Name, Startup Name, Website Name,
-        Domain Name, App Name, SaaS Name, YouTube Channel Name, Podcast Name,
-        Online Store Name, Etsy Shop Name, Shopify Store Name, Product Name,
-        Service Name, and more.
-      </div>
-
-      <div class="info-card">
-        <strong>Use a keyword for better ideas</strong>
-        Add one short keyword to personalize the results. This is useful when you
-        want the generated names to feel more specific to your niche or style.
-      </div>
-
-      <div class="info-card">
-        <strong>Save and compare your favorite names</strong>
-        You can save the best options, compare them, and build a shortlist before
-        choosing the final name for your business or project.
-      </div>
-    </div>
-  </div>
-</section>
-    
     <div class="footer">
       NameMint • Free business, brand, website, app, store, and channel name generator
     </div>
@@ -848,255 +885,87 @@
 
   <script>
     const industryData = {
-      "Advertising": {
-        emoji: "📣",
-        starts: ["Ad", "Brand", "Promo", "Reach", "Signal", "Media", "Launch", "Buzz"],
-        ends: ["Spark", "Flow", "Forge", "Works", "Wave", "Pilot", "Labs", "Studio"]
-      },
-      "Architecture": {
-        emoji: "🏛️",
-        starts: ["Arch", "Forma", "Stone", "Line", "Space", "Frame", "Urban", "Build"],
-        ends: ["Craft", "Vista", "Works", "Grid", "Edge", "Form", "Point", "Studio"]
-      },
-      "Art": {
-        emoji: "🎨",
-        starts: ["Canvas", "Color", "Muse", "Ink", "Palette", "Sketch", "Vivid", "Aura"],
-        ends: ["Bloom", "House", "Works", "Nest", "Craft", "Muse", "Lab", "Studio"]
-      },
-      "Automotive": {
-        emoji: "🚗",
-        starts: ["Auto", "Drive", "Moto", "Road", "Turbo", "Wheel", "Shift", "Ignite"],
-        ends: ["Works", "Hub", "Flow", "Point", "Lab", "Craft", "Prime", "Pilot"]
-      },
-      "Beauty": {
-        emoji: "💄",
-        starts: ["Glow", "Pure", "Luxe", "Velvet", "Blush", "Aura", "Radiant", "Silk"],
-        ends: ["Bloom", "Nest", "Touch", "Lab", "Studio", "Beauty", "Aura", "Glow"]
-      },
-      "Cleaning": {
-        emoji: "🧼",
-        starts: ["Clean", "Fresh", "Pure", "Spark", "Clear", "Bright", "Neat", "Shine"],
-        ends: ["Nest", "Works", "Care", "Flow", "House", "Point", "Wave", "Spark"]
-      },
-      "Consulting": {
-        emoji: "💼",
-        starts: ["Core", "Prime", "Lead", "Vision", "Strategy", "Scale", "Bright", "Insight"],
-        ends: ["Partners", "Advisors", "Works", "Point", "Bridge", "Growth", "Pilot", "Edge"]
-      },
-      "Crypto": {
-        emoji: "₿",
-        starts: ["Block", "Chain", "Token", "Mint", "Coin", "Vault", "Hash", "Neo"],
-        ends: ["Core", "Labs", "Bridge", "Flow", "Pilot", "Forge", "Stack", "Wave"]
-      },
-      "Cybersecurity": {
-        emoji: "🔐",
-        starts: ["Secure", "Shield", "Guard", "Lock", "Cipher", "Safe", "Sentinel", "Vault"],
-        ends: ["Core", "Labs", "Point", "Bridge", "Works", "Forge", "Wave", "Pilot"]
-      },
-      "Ecommerce": {
-        emoji: "🛒",
-        starts: ["Cart", "Shop", "Buy", "Market", "Store", "Click", "Trend", "Swift"],
-        ends: ["Nest", "Flow", "Pilot", "Lane", "Spark", "Base", "Wave", "Hub"]
-      },
-      "Education": {
-        emoji: "📘",
-        starts: ["Learn", "Bright", "Skill", "Mind", "Future", "Class", "Study", "Wise"],
-        ends: ["Path", "Bridge", "Nest", "Labs", "Academy", "Spark", "Bloom", "Works"]
-      },
-      "Events": {
-        emoji: "🎉",
-        starts: ["Event", "Party", "Celebrate", "Spark", "Moment", "Grand", "Social", "Joy"],
-        ends: ["Works", "House", "Studio", "Flow", "Spark", "Bridge", "Nest", "Craft"]
-      },
-      "Fashion": {
-        emoji: "👗",
-        starts: ["Style", "Moda", "Velora", "Chic", "Silk", "Urban", "Luxe", "Nova"],
-        ends: ["Bloom", "Wear", "Lane", "Nest", "Aura", "Studio", "Mint", "Mode"]
-      },
-      "Finance": {
-        emoji: "💳",
-        starts: ["Fin", "Capital", "Wealth", "Mint", "Secure", "Trust", "Cash", "Prime"],
-        ends: ["Bridge", "Point", "Flow", "Vault", "Pilot", "Works", "Core", "Path"]
-      },
-      "Fitness": {
-        emoji: "🏋️",
-        starts: ["Fit", "Pulse", "Active", "Core", "Peak", "Strong", "Lift", "Move"],
-        ends: ["Lab", "Works", "House", "Flow", "Forge", "Track", "Point", "Fuel"]
-      },
-      "Food": {
-        emoji: "🍔",
-        starts: ["Taste", "Fresh", "Bite", "Golden", "Flavor", "Urban", "Happy", "Yum"],
-        ends: ["Fork", "Plate", "Nest", "Kitchen", "Craft", "Bloom", "House", "Bowl"]
-      },
-      "Gaming": {
-        emoji: "🎮",
-        starts: ["Game", "Pixel", "Quest", "Turbo", "Arcade", "Nova", "Hero", "Battle"],
-        ends: ["Forge", "Play", "Zone", "Labs", "Arena", "Craft", "Core", "Nest"]
-      },
-      "Health": {
-        emoji: "🩺",
-        starts: ["Care", "Vital", "Heal", "Well", "Life", "Pure", "Health", "Pulse"],
-        ends: ["Bridge", "Nest", "Point", "Works", "Path", "Flow", "Plus", "Care"]
-      },
-      "Home Decor": {
-        emoji: "🛋️",
-        starts: ["Home", "Nest", "Cozy", "Oak", "Aura", "Urban", "Soft", "Calm"],
-        ends: ["House", "Bloom", "Living", "Craft", "Nest", "Studio", "Lane", "Room"]
-      },
-      "Hospitality": {
-        emoji: "🏨",
-        starts: ["Stay", "Grand", "Welcome", "Vista", "Cozy", "Golden", "Guest", "Serene"],
-        ends: ["House", "Suites", "Nest", "Retreat", "Bay", "Haven", "Point", "Lodge"]
-      },
-      "Insurance": {
-        emoji: "🛡️",
-        starts: ["Sure", "Secure", "Trust", "Guard", "Cover", "Prime", "Safe", "Shield"],
-        ends: ["Care", "Point", "Bridge", "Partners", "Core", "Works", "Protect", "Path"]
-      },
-      "Interior Design": {
-        emoji: "🪑",
-        starts: ["Nest", "Forma", "Style", "Cozy", "Aura", "Urban", "Oak", "Canvas"],
-        ends: ["Studio", "Living", "House", "Craft", "Works", "Space", "Bloom", "Lab"]
-      },
-      "Jewelry": {
-        emoji: "💍",
-        starts: ["Gem", "Luxe", "Gold", "Aura", "Velvet", "Crystal", "Shine", "Nova"],
-        ends: ["Stone", "Bloom", "Craft", "Nest", "Aura", "Studio", "Gems", "Spark"]
-      },
-      "Kids": {
-        emoji: "🧸",
-        starts: ["Tiny", "Happy", "Little", "Bright", "Play", "Joy", "Mini", "Wonder"],
-        ends: ["Nest", "Bloom", "Club", "Spark", "House", "Land", "Buddy", "World"]
-      },
-      "Legal": {
-        emoji: "⚖️",
-        starts: ["Justice", "Legal", "Trust", "Right", "Clear", "Prime", "Case", "Bridge"],
-        ends: ["Partners", "Law", "Point", "Counsel", "Works", "Edge", "Advisors", "Core"]
-      },
-      "Logistics": {
-        emoji: "🚚",
-        starts: ["Swift", "Cargo", "Route", "Move", "Track", "Ship", "Drive", "Transit"],
-        ends: ["Flow", "Bridge", "Works", "Point", "Hub", "Pilot", "Lane", "Core"]
-      },
-      "Marketing": {
-        emoji: "📈",
-        starts: ["Market", "Growth", "Reach", "Scale", "Brand", "Launch", "Signal", "Impact"],
-        ends: ["Flow", "Works", "Labs", "Point", "Forge", "Pilot", "Bridge", "Spark"]
-      },
-      "Media": {
-        emoji: "🎬",
-        starts: ["Media", "Story", "Frame", "Vision", "Echo", "Signal", "Motion", "Vivid"],
-        ends: ["Works", "Studio", "House", "Flow", "Lab", "Point", "Nest", "Craft"]
-      },
-      "Music": {
-        emoji: "🎵",
-        starts: ["Sound", "Beat", "Echo", "Rhythm", "Melody", "Tune", "Vibe", "Audio"],
-        ends: ["Wave", "Studio", "Works", "Lab", "Flow", "House", "Nest", "Tone"]
-      },
-      "Nonprofit": {
-        emoji: "🤝",
-        starts: ["Care", "Hope", "Impact", "Bright", "Unity", "Aid", "Human", "Support"],
-        ends: ["Bridge", "Works", "Project", "Foundation", "Network", "Path", "Circle", "Point"]
-      },
-      "Pets": {
-        emoji: "🐾",
-        starts: ["Paw", "Happy", "Pet", "Fluffy", "Tail", "Woof", "Furry", "Cozy"],
-        ends: ["Nest", "Care", "Club", "House", "Works", "Point", "Pals", "Bloom"]
-      },
-      "Photography": {
-        emoji: "📷",
-        starts: ["Photo", "Lens", "Flash", "Frame", "Focus", "Pixel", "Light", "Vista"],
-        ends: ["Studio", "Works", "Craft", "House", "Bloom", "Point", "Nest", "Lab"]
-      },
-      "Productivity": {
-        emoji: "✅",
-        starts: ["Task", "Focus", "Flow", "Clear", "Smart", "Work", "Plan", "Sync"],
-        ends: ["Base", "Lab", "Pilot", "Point", "Works", "Stack", "Bridge", "Core"]
-      },
-      "Real Estate": {
-        emoji: "🏠",
-        starts: ["Estate", "Urban", "Prime", "Home", "Metro", "Key", "Brick", "Vista"],
-        ends: ["Point", "Living", "Bridge", "Nest", "Works", "Lane", "Partners", "Hub"]
-      },
-      "Restaurants": {
-        emoji: "🍽️",
-        starts: ["Table", "Fork", "Olive", "Savor", "Urban", "Golden", "Fresh", "Bistro"],
-        ends: ["House", "Kitchen", "Table", "Bowl", "Fork", "Nest", "Garden", "Plate"]
-      },
-      "Skincare": {
-        emoji: "🧴",
-        starts: ["Skin", "Pure", "Glow", "Soft", "Aura", "Velvet", "Bloom", "Clear"],
-        ends: ["Care", "Lab", "Aura", "Glow", "Nest", "Studio", "Bloom", "Touch"]
-      },
-      "Software": {
-        emoji: "🖥️",
-        starts: ["Code", "Dev", "Soft", "Cloud", "Data", "Stack", "Logic", "Sync"],
-        ends: ["Labs", "Forge", "Base", "Pilot", "Flow", "Core", "Bridge", "Works"]
-      },
-      "Sports": {
-        emoji: "⚽",
-        starts: ["Sport", "Active", "Peak", "Pulse", "Champion", "Swift", "Arena", "Power"],
-        ends: ["Forge", "Track", "Works", "Point", "Lab", "Zone", "Club", "Flow"]
-      },
-      "Technology": {
-        emoji: "💻",
-        starts: ["Tech", "Code", "Cloud", "Data", "Byte", "Next", "Core", "Spark"],
-        ends: ["Forge", "Labs", "Pilot", "Stack", "Flow", "Core", "Wave", "Bridge"]
-      },
-      "Travel": {
-        emoji: "✈️",
-        starts: ["Travel", "Vista", "Roam", "Journey", "Sky", "Wander", "Trip", "Escape"],
-        ends: ["Nest", "Way", "Bridge", "Point", "Flow", "Trail", "Quest", "Bay"]
-      },
-      "Wedding": {
-        emoji: "💒",
-        starts: ["Ever", "Bliss", "Love", "Velvet", "Pure", "Golden", "Grace", "Bloom"],
-        ends: ["Moments", "Studio", "House", "Events", "Craft", "Aura", "Nest", "Story"]
-      },
-      "Wellness": {
-        emoji: "🧘",
-        starts: ["Zen", "Pure", "Calm", "Well", "Aura", "Inner", "Harmony", "Bloom"],
-        ends: ["Care", "Nest", "Flow", "Studio", "Works", "Path", "Aura", "House"]
-      }
+      "Advertising": { emoji: "📣", starts: ["Ad", "Brand", "Promo", "Reach", "Signal", "Media", "Launch", "Buzz"], ends: ["Spark", "Flow", "Forge", "Works", "Wave", "Pilot", "Labs", "Studio"] },
+      "Architecture": { emoji: "🏛️", starts: ["Arch", "Forma", "Stone", "Line", "Space", "Frame", "Urban", "Build"], ends: ["Craft", "Vista", "Works", "Grid", "Edge", "Form", "Point", "Studio"] },
+      "Art": { emoji: "🎨", starts: ["Canvas", "Color", "Muse", "Ink", "Palette", "Sketch", "Vivid", "Aura"], ends: ["Bloom", "House", "Works", "Nest", "Craft", "Muse", "Lab", "Studio"] },
+      "Automotive": { emoji: "🚗", starts: ["Auto", "Drive", "Moto", "Road", "Turbo", "Wheel", "Shift", "Ignite"], ends: ["Works", "Hub", "Flow", "Point", "Lab", "Craft", "Prime", "Pilot"] },
+      "Beauty": { emoji: "💄", starts: ["Glow", "Pure", "Luxe", "Velvet", "Blush", "Aura", "Radiant", "Silk"], ends: ["Bloom", "Nest", "Touch", "Lab", "Studio", "Beauty", "Aura", "Glow"] },
+      "Cleaning": { emoji: "🧼", starts: ["Clean", "Fresh", "Pure", "Spark", "Clear", "Bright", "Neat", "Shine"], ends: ["Nest", "Works", "Care", "Flow", "House", "Point", "Wave", "Spark"] },
+      "Consulting": { emoji: "💼", starts: ["Core", "Prime", "Lead", "Vision", "Strategy", "Scale", "Bright", "Insight"], ends: ["Partners", "Advisors", "Works", "Point", "Bridge", "Growth", "Pilot", "Edge"] },
+      "Crypto": { emoji: "₿", starts: ["Block", "Chain", "Token", "Mint", "Coin", "Vault", "Hash", "Neo"], ends: ["Core", "Labs", "Bridge", "Flow", "Pilot", "Forge", "Stack", "Wave"] },
+      "Cybersecurity": { emoji: "🔐", starts: ["Secure", "Shield", "Guard", "Lock", "Cipher", "Safe", "Sentinel", "Vault"], ends: ["Core", "Labs", "Point", "Bridge", "Works", "Forge", "Wave", "Pilot"] },
+      "Ecommerce": { emoji: "🛒", starts: ["Cart", "Shop", "Buy", "Market", "Store", "Click", "Trend", "Swift"], ends: ["Nest", "Flow", "Pilot", "Lane", "Spark", "Base", "Wave", "Hub"] },
+      "Education": { emoji: "📘", starts: ["Learn", "Bright", "Skill", "Mind", "Future", "Class", "Study", "Wise"], ends: ["Path", "Bridge", "Nest", "Labs", "Academy", "Spark", "Bloom", "Works"] },
+      "Events": { emoji: "🎉", starts: ["Event", "Party", "Celebrate", "Spark", "Moment", "Grand", "Social", "Joy"], ends: ["Works", "House", "Studio", "Flow", "Spark", "Bridge", "Nest", "Craft"] },
+      "Fashion": { emoji: "👗", starts: ["Style", "Moda", "Velora", "Chic", "Silk", "Urban", "Luxe", "Nova"], ends: ["Bloom", "Wear", "Lane", "Nest", "Aura", "Studio", "Mint", "Mode"] },
+      "Finance": { emoji: "💳", starts: ["Fin", "Capital", "Wealth", "Mint", "Secure", "Trust", "Cash", "Prime"], ends: ["Bridge", "Point", "Flow", "Vault", "Pilot", "Works", "Core", "Path"] },
+      "Fitness": { emoji: "🏋️", starts: ["Fit", "Pulse", "Active", "Core", "Peak", "Strong", "Lift", "Move"], ends: ["Lab", "Works", "House", "Flow", "Forge", "Track", "Point", "Fuel"] },
+      "Food": { emoji: "🍔", starts: ["Taste", "Fresh", "Bite", "Golden", "Flavor", "Urban", "Happy", "Yum"], ends: ["Fork", "Plate", "Nest", "Kitchen", "Craft", "Bloom", "House", "Bowl"] },
+      "Gaming": { emoji: "🎮", starts: ["Game", "Pixel", "Quest", "Turbo", "Arcade", "Nova", "Hero", "Battle"], ends: ["Forge", "Play", "Zone", "Labs", "Arena", "Craft", "Core", "Nest"] },
+      "Health": { emoji: "🩺", starts: ["Care", "Vital", "Heal", "Well", "Life", "Pure", "Health", "Pulse"], ends: ["Bridge", "Nest", "Point", "Works", "Path", "Flow", "Plus", "Care"] },
+      "Home Decor": { emoji: "🛋️", starts: ["Home", "Nest", "Cozy", "Oak", "Aura", "Urban", "Soft", "Calm"], ends: ["House", "Bloom", "Living", "Craft", "Nest", "Studio", "Lane", "Room"] },
+      "Hospitality": { emoji: "🏨", starts: ["Stay", "Grand", "Welcome", "Vista", "Cozy", "Golden", "Guest", "Serene"], ends: ["House", "Suites", "Nest", "Retreat", "Bay", "Haven", "Point", "Lodge"] },
+      "Insurance": { emoji: "🛡️", starts: ["Sure", "Secure", "Trust", "Guard", "Cover", "Prime", "Safe", "Shield"], ends: ["Care", "Point", "Bridge", "Partners", "Core", "Works", "Protect", "Path"] },
+      "Interior Design": { emoji: "🪑", starts: ["Nest", "Forma", "Style", "Cozy", "Aura", "Urban", "Oak", "Canvas"], ends: ["Studio", "Living", "House", "Craft", "Works", "Space", "Bloom", "Lab"] },
+      "Jewelry": { emoji: "💍", starts: ["Gem", "Luxe", "Gold", "Aura", "Velvet", "Crystal", "Shine", "Nova"], ends: ["Stone", "Bloom", "Craft", "Nest", "Aura", "Studio", "Gems", "Spark"] },
+      "Kids": { emoji: "🧸", starts: ["Tiny", "Happy", "Little", "Bright", "Play", "Joy", "Mini", "Wonder"], ends: ["Nest", "Bloom", "Club", "Spark", "House", "Land", "Buddy", "World"] },
+      "Legal": { emoji: "⚖️", starts: ["Justice", "Legal", "Trust", "Right", "Clear", "Prime", "Case", "Bridge"], ends: ["Partners", "Law", "Point", "Counsel", "Works", "Edge", "Advisors", "Core"] },
+      "Logistics": { emoji: "🚚", starts: ["Swift", "Cargo", "Route", "Move", "Track", "Ship", "Drive", "Transit"], ends: ["Flow", "Bridge", "Works", "Point", "Hub", "Pilot", "Lane", "Core"] },
+      "Marketing": { emoji: "📈", starts: ["Market", "Growth", "Reach", "Scale", "Brand", "Launch", "Signal", "Impact"], ends: ["Flow", "Works", "Labs", "Point", "Forge", "Pilot", "Bridge", "Spark"] },
+      "Media": { emoji: "🎬", starts: ["Media", "Story", "Frame", "Vision", "Echo", "Signal", "Motion", "Vivid"], ends: ["Works", "Studio", "House", "Flow", "Lab", "Point", "Nest", "Craft"] },
+      "Music": { emoji: "🎵", starts: ["Sound", "Beat", "Echo", "Rhythm", "Melody", "Tune", "Vibe", "Audio"], ends: ["Wave", "Studio", "Works", "Lab", "Flow", "House", "Nest", "Tone"] },
+      "Nonprofit": { emoji: "🤝", starts: ["Care", "Hope", "Impact", "Bright", "Unity", "Aid", "Human", "Support"], ends: ["Bridge", "Works", "Project", "Foundation", "Network", "Path", "Circle", "Point"] },
+      "Pets": { emoji: "🐾", starts: ["Paw", "Happy", "Pet", "Fluffy", "Tail", "Woof", "Furry", "Cozy"], ends: ["Nest", "Care", "Club", "House", "Works", "Point", "Pals", "Bloom"] },
+      "Photography": { emoji: "📷", starts: ["Photo", "Lens", "Flash", "Frame", "Focus", "Pixel", "Light", "Vista"], ends: ["Studio", "Works", "Craft", "House", "Bloom", "Point", "Nest", "Lab"] },
+      "Productivity": { emoji: "✅", starts: ["Task", "Focus", "Flow", "Clear", "Smart", "Work", "Plan", "Sync"], ends: ["Base", "Lab", "Pilot", "Point", "Works", "Stack", "Bridge", "Core"] },
+      "Real Estate": { emoji: "🏠", starts: ["Estate", "Urban", "Prime", "Home", "Metro", "Key", "Brick", "Vista"], ends: ["Point", "Living", "Bridge", "Nest", "Works", "Lane", "Partners", "Hub"] },
+      "Restaurants": { emoji: "🍽️", starts: ["Table", "Fork", "Olive", "Savor", "Urban", "Golden", "Fresh", "Bistro"], ends: ["House", "Kitchen", "Table", "Bowl", "Fork", "Nest", "Garden", "Plate"] },
+      "Skincare": { emoji: "🧴", starts: ["Skin", "Pure", "Glow", "Soft", "Aura", "Velvet", "Bloom", "Clear"], ends: ["Care", "Lab", "Aura", "Glow", "Nest", "Studio", "Bloom", "Touch"] },
+      "Software": { emoji: "🖥️", starts: ["Code", "Dev", "Soft", "Cloud", "Data", "Stack", "Logic", "Sync"], ends: ["Labs", "Forge", "Base", "Pilot", "Flow", "Core", "Bridge", "Works"] },
+      "Sports": { emoji: "⚽", starts: ["Sport", "Active", "Peak", "Pulse", "Champion", "Swift", "Arena", "Power"], ends: ["Forge", "Track", "Works", "Point", "Lab", "Zone", "Club", "Flow"] },
+      "Technology": { emoji: "💻", starts: ["Tech", "Code", "Cloud", "Data", "Byte", "Next", "Core", "Spark"], ends: ["Forge", "Labs", "Pilot", "Stack", "Flow", "Core", "Wave", "Bridge"] },
+      "Travel": { emoji: "✈️", starts: ["Travel", "Vista", "Roam", "Journey", "Sky", "Wander", "Trip", "Escape"], ends: ["Nest", "Way", "Bridge", "Point", "Flow", "Trail", "Quest", "Bay"] },
+      "Wedding": { emoji: "💒", starts: ["Ever", "Bliss", "Love", "Velvet", "Pure", "Golden", "Grace", "Bloom"], ends: ["Moments", "Studio", "House", "Events", "Craft", "Aura", "Nest", "Story"] },
+      "Wellness": { emoji: "🧘", starts: ["Zen", "Pure", "Calm", "Well", "Aura", "Inner", "Harmony", "Bloom"], ends: ["Care", "Nest", "Flow", "Studio", "Works", "Path", "Aura", "House"] }
     };
 
     const purposeData = {
-      "Amazon Brand Name": { emoji: "📦", descriptors: ["for Amazon products", "made for ecommerce branding"] },
-      "App Name": { emoji: "📱", descriptors: ["for a mobile app", "good for app branding"] },
-      "Blog Name": { emoji: "✍️", descriptors: ["for a blog", "good for content publishing"] },
-      "Book Title Brand": { emoji: "📚", descriptors: ["for a book-based brand", "good for author branding"] },
-      "Brand Name": { emoji: "🏷️", descriptors: ["for a brand", "good for long-term identity"] },
-      "Business Name": { emoji: "💼", descriptors: ["for a business", "good for commercial use"] },
-      "Club Name": { emoji: "🎯", descriptors: ["for a club", "good for groups and communities"] },
-      "Community Name": { emoji: "👥", descriptors: ["for a community", "good for audience building"] },
-      "Company Name": { emoji: "🏢", descriptors: ["for a company", "formal and scalable"] },
-      "Content Creator Name": { emoji: "🎥", descriptors: ["for a creator brand", "good for online identity"] },
-      "Course Name": { emoji: "🎓", descriptors: ["for a course", "good for educational products"] },
-      "Creator Brand Name": { emoji: "🌟", descriptors: ["for a creator brand", "good for personal audience growth"] },
-      "Domain Name": { emoji: "🌐", descriptors: ["for a domain or URL", "better when short and easy"] },
-      "Etsy Shop Name": { emoji: "🛍️", descriptors: ["for an Etsy shop", "crafted for handmade or ecommerce brands"] },
-      "Event Brand Name": { emoji: "🎫", descriptors: ["for an event brand", "good for memorable campaigns"] },
-      "Facebook Page Name": { emoji: "📘", descriptors: ["for a Facebook page", "good for social presence"] },
-      "Group Name": { emoji: "🫂", descriptors: ["for a group", "good for communities"] },
-      "Instagram Username": { emoji: "📸", descriptors: ["for Instagram", "better when catchy and short"] },
-      "Membership Name": { emoji: "🔒", descriptors: ["for a membership or paid community", "good for exclusive offers"] },
-      "Newsletter Name": { emoji: "📩", descriptors: ["for a newsletter", "good for recurring content"] },
-      "Online Store Name": { emoji: "🛒", descriptors: ["for an online store", "good for selling products"] },
-      "Organization Name": { emoji: "🏛️", descriptors: ["for an organization", "formal and trusted"] },
-      "Pen Name": { emoji: "🖋️", descriptors: ["for an author persona", "good for writers"] },
-      "Personal Brand Name": { emoji: "🙋", descriptors: ["for a personal brand", "good for experts and creators"] },
-      "Podcast Name": { emoji: "🎙️", descriptors: ["for a podcast", "good for spoken content"] },
-      "Product Name": { emoji: "📦", descriptors: ["for a product", "good for direct offers"] },
-      "Production Company Name": { emoji: "🎬", descriptors: ["for a production company", "good for media businesses"] },
-      "SaaS Name": { emoji: "☁️", descriptors: ["for software as a service", "good for startups and B2B tools"] },
-      "Service Name": { emoji: "🧰", descriptors: ["for a service", "good for offers and packages"] },
-      "Shopify Store Name": { emoji: "🛍️", descriptors: ["for a Shopify store", "good for ecommerce branding"] },
-      "Small Business Name": { emoji: "🏪", descriptors: ["for a small business", "simple and practical"] },
-      "Startup Name": { emoji: "🚀", descriptors: ["for a startup", "modern and scalable"] },
-      "TikTok Username": { emoji: "🎵", descriptors: ["for TikTok", "short, fast, and memorable"] },
-      "Twitch Channel Name": { emoji: "🟣", descriptors: ["for a Twitch channel", "good for streaming brands"] },
-      "Website Name": { emoji: "🖥️", descriptors: ["for a website", "clean and easy to remember"] },
-      "YouTube Channel Name": { emoji: "▶️", descriptors: ["for YouTube", "good for creator growth and content"] }
+      "Amazon Brand Name": { emoji: "📦" },
+      "App Name": { emoji: "📱" },
+      "Blog Name": { emoji: "✍️" },
+      "Book Title Brand": { emoji: "📚" },
+      "Brand Name": { emoji: "🏷️" },
+      "Business Name": { emoji: "💼" },
+      "Club Name": { emoji: "🎯" },
+      "Community Name": { emoji: "👥" },
+      "Company Name": { emoji: "🏢" },
+      "Content Creator Name": { emoji: "🎥" },
+      "Course Name": { emoji: "🎓" },
+      "Creator Brand Name": { emoji: "🌟" },
+      "Domain Name": { emoji: "🌐" },
+      "Etsy Shop Name": { emoji: "🛍️" },
+      "Event Brand Name": { emoji: "🎫" },
+      "Facebook Page Name": { emoji: "📘" },
+      "Group Name": { emoji: "🫂" },
+      "Instagram Username": { emoji: "📸" },
+      "Membership Name": { emoji: "🔒" },
+      "Newsletter Name": { emoji: "📩" },
+      "Online Store Name": { emoji: "🛒" },
+      "Organization Name": { emoji: "🏛️" },
+      "Pen Name": { emoji: "🖋️" },
+      "Personal Brand Name": { emoji: "🙋" },
+      "Podcast Name": { emoji: "🎙️" },
+      "Product Name": { emoji: "📦" },
+      "Production Company Name": { emoji: "🎬" },
+      "SaaS Name": { emoji: "☁️" },
+      "Service Name": { emoji: "🧰" },
+      "Shopify Store Name": { emoji: "🛍️" },
+      "Small Business Name": { emoji: "🏪" },
+      "Startup Name": { emoji: "🚀" },
+      "TikTok Username": { emoji: "🎵" },
+      "Twitch Channel Name": { emoji: "🟣" },
+      "Website Name": { emoji: "🖥️" },
+      "YouTube Channel Name": { emoji: "▶️" }
     };
 
     const industryNames = Object.keys(industryData).sort((a, b) => a.localeCompare(b));
@@ -1148,9 +1017,17 @@
     const summaryStyle = document.getElementById("summaryStyle");
     const summaryKeyword = document.getElementById("summaryKeyword");
 
+    const domainPanel = document.getElementById("domainPanel");
+    const domainSelectedText = document.getElementById("domainSelectedText");
+    const domainCom = document.getElementById("domainCom");
+    const domainCo = document.getElementById("domainCo");
+    const domainIo = document.getElementById("domainIo");
+    const domainAi = document.getElementById("domainAi");
+
     let currentGenerated = [];
     let favorites = JSON.parse(localStorage.getItem("namemintFavorites") || "[]");
     let history = JSON.parse(localStorage.getItem("namemintHistory") || "[]");
+    let selectedDomainBase = "";
 
     function populateCategoryOptions(list = industryNames) {
       const previousValue = categorySelect.value;
@@ -1163,9 +1040,7 @@
         categorySelect.appendChild(option);
       });
 
-      if (list.includes(previousValue)) {
-        categorySelect.value = previousValue;
-      }
+      if (list.includes(previousValue)) categorySelect.value = previousValue;
     }
 
     function populatePurposeOptions(list = purposeNames) {
@@ -1179,9 +1054,7 @@
         purposeSelect.appendChild(option);
       });
 
-      if (list.includes(previousValue)) {
-        purposeSelect.value = previousValue;
-      }
+      if (list.includes(previousValue)) purposeSelect.value = previousValue;
     }
 
     function filterCategoryOptions() {
@@ -1281,20 +1154,18 @@
     }
 
     function buildName(industry, purpose, keyword, style, wordCount) {
-      const industryBlock = industryData[industry];
-      const start = randomItem(industryBlock.starts);
-      const end = randomItem(industryBlock.ends);
+      const block = industryData[industry];
+      const start = randomItem(block.starts);
+      const end = randomItem(block.ends);
 
-      let preferredWordCount = wordCount;
-      if (preferredWordCount === "auto") {
-        preferredWordCount = Math.random() > 0.55 ? "one" : "two";
+      let preferred = wordCount;
+      if (preferred === "auto") {
+        preferred = Math.random() > 0.55 ? "one" : "two";
       }
 
-      if (preferredWordCount === "two") {
-        return makeTwoWordName(start, end, keyword, style, purpose);
-      }
-
-      return makeOneWordName(start, end, keyword, style, purpose);
+      return preferred === "two"
+        ? makeTwoWordName(start, end, keyword, style, purpose)
+        : makeOneWordName(start, end, keyword, style, purpose);
     }
 
     function generateNames() {
@@ -1317,13 +1188,14 @@
       resultsMeta.innerHTML = `
         <strong>${industryData[industry].emoji} ${industry}</strong> ·
         <strong>${purposeData[purpose].emoji} ${purpose}</strong> ·
-        <strong>${style.charAt(0).toUpperCase() + style.slice(1)}</strong>
+        <strong>${capitalize(style)}</strong>
         ${safeKeyword(keyword) ? `· keyword: <strong>${safeKeyword(keyword)}</strong>` : ""}
       `;
 
       updateSummary();
       renderResults(industry, purpose, style);
       addToHistory(generated, industry, purpose);
+      hideDomainPanel();
     }
 
     function shuffleAgain() {
@@ -1339,6 +1211,7 @@
           <strong>Generate 8 Names</strong>.
         </div>
       `;
+      hideDomainPanel();
     }
 
     function renderResults(industry, purpose, style) {
@@ -1349,7 +1222,6 @@
 
       resultsList.innerHTML = currentGenerated.map(name => {
         const isFav = favorites.some(item => item.name === name && item.industry === industry && item.purpose === purpose);
-
         return `
           <div class="name-card">
             <div class="name-main">
@@ -1362,6 +1234,7 @@
             </div>
             <div class="name-actions">
               <button class="small-btn" onclick="copyText('${escapeJs(name)}')">Copy</button>
+              <button class="small-btn" onclick="prepareDomainChecks('${escapeJs(name)}')">Domains</button>
               <button class="small-btn favorite ${isFav ? "active" : ""}" onclick="toggleFavorite('${escapeJs(name)}', '${escapeJs(industry)}', '${escapeJs(purpose)}')">
                 ${isFav ? "Saved" : "Save"}
               </button>
@@ -1384,11 +1257,7 @@
     }
 
     function addToHistory(generatedNames, industry, purpose) {
-      const newItems = generatedNames.map(name => ({
-        name,
-        industry,
-        purpose
-      }));
+      const newItems = generatedNames.map(name => ({ name, industry, purpose }));
 
       history = [...newItems, ...history]
         .filter((item, index, arr) =>
@@ -1425,7 +1294,7 @@
           </div>
           <div class="name-actions">
             <button class="small-btn" onclick="copyText('${escapeJs(item.name)}')">Copy</button>
-            <button class="small-btn" onclick="toggleFavorite('${escapeJs(item.name)}', '${escapeJs(item.industry)}', '${escapeJs(item.purpose)}')">Save</button>
+            <button class="small-btn" onclick="prepareDomainChecks('${escapeJs(item.name)}')">Domains</button>
           </div>
         </div>
       `).join("");
@@ -1464,7 +1333,6 @@
         showToast("No favorites to clear");
         return;
       }
-
       favorites = [];
       localStorage.setItem("namemintFavorites", JSON.stringify(favorites));
       renderFavorites();
@@ -1495,6 +1363,7 @@
           </div>
           <div class="name-actions">
             <button class="small-btn" onclick="copyText('${escapeJs(item.name)}')">Copy</button>
+            <button class="small-btn" onclick="prepareDomainChecks('${escapeJs(item.name)}')">Domains</button>
             <button class="small-btn" onclick="removeFavorite('${escapeJs(item.name)}', '${escapeJs(item.industry)}', '${escapeJs(item.purpose)}')">Delete</button>
           </div>
         </div>
@@ -1518,6 +1387,85 @@
       }
     }
 
+    function normalizeDomainBase(name) {
+      return name.toLowerCase().replace(/[^a-z0-9]/g, "");
+    }
+
+    function prepareDomainChecks(name) {
+      selectedDomainBase = normalizeDomainBase(name);
+
+      if (!selectedDomainBase) {
+        showToast("Invalid domain name");
+        return;
+      }
+
+      domainCom.textContent = selectedDomainBase + ".com";
+      domainCo.textContent = selectedDomainBase + ".co";
+      domainIo.textContent = selectedDomainBase + ".io";
+      domainAi.textContent = selectedDomainBase + ".ai";
+
+      domainSelectedText.innerHTML = `
+        Selected name: <strong>${name}</strong><br>
+        Suggested base: <strong>${selectedDomainBase}</strong>
+      `;
+
+      domainPanel.style.display = "block";
+      domainPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    function hideDomainPanel() {
+      selectedDomainBase = "";
+      domainPanel.style.display = "none";
+    }
+
+    function copyDomainSuggestion(ext) {
+      if (!selectedDomainBase) {
+        showToast("Choose a name first");
+        return;
+      }
+      copyText(selectedDomainBase + ext);
+    }
+
+    function openRegistrarCheck(provider) {
+      if (!selectedDomainBase) {
+        showToast("Choose a name first");
+        return;
+      }
+
+      const domain = selectedDomainBase + ".com";
+      let url = "";
+
+      if (provider === "namecheap") {
+        url = "https://www.namecheap.com/domains/registration/results/?domain=" + encodeURIComponent(domain);
+      } else if (provider === "godaddy") {
+        url = "https://www.godaddy.com/domainsearch/find?domainToCheck=" + encodeURIComponent(domain);
+      }
+
+      window.open(url, "_blank");
+    }
+
+    function openWhoisCheck() {
+      if (!selectedDomainBase) {
+        showToast("Choose a name first");
+        return;
+      }
+
+      const domain = selectedDomainBase + ".com";
+      const url = "https://www.whois.com/whois/" + encodeURIComponent(domain);
+      window.open(url, "_blank");
+    }
+
+    function openAllDomainChecks() {
+      if (!selectedDomainBase) {
+        showToast("Choose a name first");
+        return;
+      }
+
+      openRegistrarCheck("namecheap");
+      setTimeout(() => openRegistrarCheck("godaddy"), 250);
+      setTimeout(() => openWhoisCheck(), 500);
+    }
+
     function escapeJs(text) {
       return text.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
     }
@@ -1537,8 +1485,7 @@
     }
 
     function toggleFaq(button) {
-      const item = button.parentElement;
-      item.classList.toggle("open");
+      button.parentElement.classList.toggle("open");
     }
 
     document.getElementById("keywordInput").addEventListener("input", updateSummary);
