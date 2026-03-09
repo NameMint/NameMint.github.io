@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Name Generator</title>
+</head>
+
+<body style="font-family: Arial; text-align:center; margin-top:100px;">
+
+<h1>Business Name Generator</h1>
+
+<p>Click the button to generate a name</p>
+
+<button onclick="generateName()">Generate Name</button>
+
+<h2 id="result"></h2>
+
+<script>
+const names = [
+"NovaBrand",
+"BrightForge",
+"UrbanNest",
+"SparkFlow",
+"PrimeCraft",
+"BlueOrbit",
+"FreshHive",
+"NextBloom",
+"TruePilot",
+"CoreFusion"
+];
+
+function generateName(){
+let random = names[Math.floor(Math.random() * names.length)];
+document.getElementById("result").innerText = random;
+}
+</script>
+
+</body>
+</html>
