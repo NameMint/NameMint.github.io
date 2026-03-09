@@ -1,38 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Name Generator</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NameMint - Business Name Generator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fb, #e9eefb);
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 60px auto;
+      background: white;
+      padding: 40px 24px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #6b7280;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background: #111827;
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.92;
+    }
+
+    .result-box {
+      margin-top: 28px;
+      padding: 24px;
+      background: #f9fafb;
+      border-radius: 16px;
+      min-height: 40px;
+    }
+
+    #result {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef2ff;
+      color: #3730a3;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+  </style>
 </head>
+<body>
+  <div class="container">
+    <div class="tag">Free AI-style brand names</div>
+    <h1>NameMint</h1>
+    <p>Generate catchy business names in one click.</p>
 
-<body style="font-family: Arial; text-align:center; margin-top:100px;">
+    <button onclick="generateName()">Generate Name</button>
 
-<h1>Business Name Generator</h1>
+    <div class="result-box">
+      <h2 id="result">Your brand name will appear here</h2>
+    </div>
+  </div>
 
-<p>Click the button to generate a name</p>
+  <script>
+    const names = [
+      "NovaBrand",
+      "BrightForge",
+      "UrbanNest",
+      "SparkFlow",
+      "PrimeCraft",
+      "BlueOrbit",
+      "FreshHive",
+      "NextBloom",
+      "TruePilot",
+      "CoreFusion",
+      "MintWave",
+      "BoldSpring",
+      "PixelRise",
+      "CloudNest",
+      "Brandora"
+    ];
 
-<button onclick="generateName()">Generate Name</button>
-
-<h2 id="result"></h2>
-
-<script>
-const names = [
-"NovaBrand",
-"BrightForge",
-"UrbanNest",
-"SparkFlow",
-"PrimeCraft",
-"BlueOrbit",
-"FreshHive",
-"NextBloom",
-"TruePilot",
-"CoreFusion"
-];
-
-function generateName(){
-let random = names[Math.floor(Math.random() * names.length)];
-document.getElementById("result").innerText = random;
-}
-</script>
-
+    function generateName() {
+      const random = names[Math.floor(Math.random() * names.length)];
+      document.getElementById("result").innerText = random;
+    }
+  </script>
 </body>
 </html>
