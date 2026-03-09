@@ -500,7 +500,6 @@
     }
 
     .favorites-list,
-    .history-list,
     .shortlist-list {
       display: grid;
       gap: 10px;
@@ -508,7 +507,6 @@
     }
 
     .favorite-item,
-    .history-item,
     .shortlist-item {
       display: flex;
       align-items: center;
@@ -521,14 +519,12 @@
     }
 
     .favorite-name,
-    .history-name,
     .shortlist-name {
       font-weight: bold;
       word-break: break-word;
     }
 
     .favorite-meta,
-    .history-meta,
     .shortlist-meta {
       color: var(--muted);
       font-size: 13px;
@@ -661,7 +657,6 @@
 
       .name-card,
       .favorite-item,
-      .history-item,
       .shortlist-item {
         grid-template-columns: 1fr;
         align-items: flex-start;
@@ -926,15 +921,7 @@
         </div>
       </div>
 
-      <div class="panel">
-        <div class="panel-inner">
-          <h2 class="panel-title">Recent history</h2>
-          <p class="panel-subtitle" style="margin-bottom:12px;">
-            Your last generated names are kept here for quick comparison.
-          </p>
-          <div id="historyList" class="history-list"></div>
-        </div>
-      </div>
+     
     </section>
 
     <section class="panel section-space">
@@ -1176,7 +1163,6 @@
     const resultsList = document.getElementById("resultsList");
     const resultsMeta = document.getElementById("resultsMeta");
     const favoritesList = document.getElementById("favoritesList");
-    const historyList = document.getElementById("historyList");
     const shortlistList = document.getElementById("shortlistList");
     const toast = document.getElementById("toast");
     const favoritesTopCount = document.getElementById("favoritesTopCount");
@@ -1201,7 +1187,6 @@
 
     let currentGenerated = [];
     let favorites = JSON.parse(localStorage.getItem("namemintFavorites") || "[]");
-    let history = JSON.parse(localStorage.getItem("namemintHistory") || "[]");
     let shortlist = JSON.parse(localStorage.getItem("namemintShortlist") || "[]");
     let selectedDomainBase = "";
     let selectedName = "";
@@ -1350,7 +1335,6 @@
 
       updateSummary();
       renderResults(industry, purpose, style);
-      addToHistory(generated, industry, purpose);
       hideSelectionPanels();
     }
 
@@ -1418,45 +1402,6 @@
       summaryPurpose.textContent = `Name for: ${purpose}`;
       summaryStyle.textContent = `Style: ${capitalize(style)}`;
       summaryKeyword.textContent = `Keyword: ${keyword || "none"}`;
-    }
-
-    function addToHistory(generatedNames, industry, purpose) {
-      const newItems = generatedNames.map(name => ({ name, industry, purpose }));
-      history = [...newItems, ...history]
-        .filter((item, index, arr) =>
-          index === arr.findIndex(other =>
-            other.name === item.name &&
-            other.industry === item.industry &&
-            other.purpose === item.purpose
-          )
-        )
-        .slice(0, 20);
-
-      localStorage.setItem("namemintHistory", JSON.stringify(history));
-      renderHistory();
-    }
-
-    function renderHistory() {
-      if (!history.length) {
-        historyList.innerHTML = `<div class="empty-state" style="min-height:auto;">No history yet.</div>`;
-        return;
-      }
-
-      historyList.innerHTML = history.map(item => `
-        <div class="history-item">
-          <div>
-            <div class="history-name">${item.name}</div>
-            <div class="history-meta">
-              ${industryData[item.industry].emoji} ${item.industry} ·
-              ${purposeData[item.purpose].emoji} ${item.purpose}
-            </div>
-          </div>
-          <div class="name-actions">
-            <button class="small-btn" onclick="copyText('${escapeJs(item.name)}')">Copy</button>
-            <button class="small-btn" onclick="selectName('${escapeJs(item.name)}')">Select</button>
-          </div>
-        </div>
-      `).join("");
     }
 
     function toggleFavorite(name, industry, purpose) {
@@ -1825,14 +1770,11 @@
 
     function clearAllData() {
       localStorage.removeItem("namemintFavorites");
-      localStorage.removeItem("namemintHistory");
       localStorage.removeItem("namemintShortlist");
       favorites = [];
-      history = [];
       shortlist = [];
       clearResults();
       renderFavorites();
-      renderHistory();
       renderShortlist();
       showToast("All local data cleared");
     }
@@ -1867,7 +1809,6 @@
     populateCategoryOptions();
     populatePurposeOptions();
     renderFavorites();
-    renderHistory();
     renderShortlist();
     updateSummary();
   </script>
